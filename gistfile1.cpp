@@ -3,20 +3,20 @@
 using namespace std; 
 
 int main() { 
-	int number; 
-	cin >> number;
-	int price[number];
+	int num; 
+	cin >> num;
+	int price[num];
 	int total = 0;
-	for (int i = 0; i < number; i++) {
+	for (int i = 0; i < num; i++) {
 		cin >> price[i];
 		total += price[i];
 	}
 	
-	int list[number * (number-1)][number];
+	int list[num * (num-1)][num];
 	int change = 2;
 	int save = 0;
-	for (int i = 0; i < (number * (number-1)); i++) {
-		for (int j = 1; j <= number; j++) {
+	for (int i = 0; i < (num * (num-1)); i++) {
+		for (int j = 1; j <= num; j++) {
 			if (j % (change*2) == 0)
 				save = 0; 
 			else if (j % change == 0)
@@ -26,8 +26,8 @@ int main() {
 		change *= 2;
 	}
 	
-	for (int i = 0; i < number * (number-1); i++) {
-		for (int j = 0; j < number; j++) {
+	for (int i = 0; i < num * (num-1); i++) {
+		for (int j = 0; j < num; j++) {
 		cout << list[i][j];
 		}
 		cout << endl;
