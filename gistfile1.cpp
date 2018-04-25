@@ -5,14 +5,13 @@ int main() {
 	int num; 
 	cin >> num;
 	int price[num];
-	int total = 0;
 	int listnum = 1;
 	for (int i = 0; i < num; i++) {
 		cin >> price[i];
-		total += price[i];
 		listnum *= 2;
 	}
 	
+	//排列組合(總表)(2進位表) V 
 	int list[num][listnum];
 	int change = 1;
 	bool save = 0;
@@ -42,5 +41,44 @@ int main() {
 	}
 	*/
 	
- return 0; 
+	//找最小 
+	int total[2];
+	for (int i = 0; i < 2; i++)
+		total[i] = 0;
+	int least = 200; //200一定比較大 
+	int way;
+	int cash = 0;
+	for (int j = 1; j < listnum; j++) {
+		int i;
+		for (i = 0; i < num; i++) {
+			if (list[i][j] == 1)
+				total[0] += price[i];
+			else if (list[i][j] == 0)
+				total[1] += price[i];
+		}
+		if (total[0] % 100 == 0)
+			cash = 100 - (total[1] % 100);
+		else if (total[1] % 100 == 0)
+			cash = 100 - (total[0] % 100);
+		else
+			cash = 100 - (total[0] % 100) + 100 - (total[1] % 100);
+		if (cash < least){
+			least = cash;
+			way = i-1;
+		}
+		cash = 0;
+		for (i = 0; i < 2; i++)
+			total[i] = 0;
+	}
+	
+	//cout
+	for (int i = 0; i < num; i++){
+		if (list[way][i] == 1)
+			cout << "A買商品" << i+1 << endl;
+		else if (list[way][i] == 0)
+			cout << "B買商品" << i+1 << endl;			
+	}
+	cout << "可換現金" << least << "元"; 
+	
+	return 0; 
 }
