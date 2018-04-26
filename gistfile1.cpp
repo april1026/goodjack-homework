@@ -45,7 +45,7 @@ int main() {
 	int total[2];
 	for (int i = 0; i < 2; i++)
 		total[i] = 0;
-	int least = 200; //200一定比較大 
+	int biggest = 0; //0一定比較小 
 	int way;
 	int cash = 0;
 	for (int j = 1; j < listnum; j++) {
@@ -56,14 +56,18 @@ int main() {
 			else if (list[i][j] == 0)
 				total[1] += price[i];
 		}
+		//cout << total[0] << endl;
 		if (total[0] % 100 == 0)
 			cash = 100 - (total[1] % 100);
 		else if (total[1] % 100 == 0)
 			cash = 100 - (total[0] % 100);
+		else if (total[0] % 100 == 0 && total[1] % 100 == 0)
+			cash = 0;
 		else
 			cash = 100 - (total[0] % 100) + 100 - (total[1] % 100);
-		if (cash < least){
-			least = cash;
+		//cout << cash <<"c" << endl;
+		if (cash > biggest){
+			biggest = cash;
 			way = i-1;
 		}
 		cash = 0;
@@ -78,7 +82,7 @@ int main() {
 		else if (list[way][i] == 0)
 			cout << "B買商品" << i+1 << endl;			
 	}
-	cout << "可換現金" << least << "元"; 
+	cout << "可換現金" << biggest << "元"; 
 	
 	return 0; 
 }
