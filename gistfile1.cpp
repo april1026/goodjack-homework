@@ -32,14 +32,14 @@ int main() {
 		save = 1;
 	}
 	
-	/*
+	
 	for (int i = 0; i < num; i++) {
 		for (int j = 0; j < listnum; j++) {
 		cout << list[i][j];
 		}
 		cout << endl;
 	}
-	*/
+	
 	
 	//找最小 
 	int total[2];
@@ -68,12 +68,13 @@ int main() {
 		//cout << cash <<"c" << endl;
 		if (cash > biggest){
 			biggest = cash;
-			way = i-1;
+			way = j;
 		}
 		cash = 0;
-		for (i = 0; i < 2; i++)
-			total[i] = 0;
+		for (int a = 0; a < 2; a++)
+			total[a] = 0;
 	}
+	//cout << way;
 	
 	//cout
 	for (int i = 0; i < num; i++){
