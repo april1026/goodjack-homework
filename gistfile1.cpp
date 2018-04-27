@@ -78,9 +78,9 @@ int main() {
 	
 	//cout
 	for (int i = 0; i < num; i++){
-		if (list[way][i] == 1)
+		if (list[i][way] == 1)
 			cout << "A買商品" << i+1 << endl;
-		else if (list[way][i] == 0)
+		else if (list[i][way] == 0)
 			cout << "B買商品" << i+1 << endl;			
 	}
 	cout << "可換現金" << biggest << "元"; 
